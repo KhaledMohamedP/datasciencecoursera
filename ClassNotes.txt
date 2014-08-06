@@ -1,0 +1,46 @@
+Descriptive data: 
+	descripe the popluation (census)
+	Visual rep. by google for books 
+	descirpitpn
+
+exploratory analysis 
+	finding relationship between data but not verify or use for predciting
+	correlation does not imply causation 
+	dicovery for connection 
+	use for exploration 
+Inferntial analysis
+	small sample of data to say something estimating 
+Predictive analysis 
+	if x predicts y != x cause y 
+Causal analysis 
+	usually randomized 
+	avg effect
+Mechanistic analysis
+	understand the exact changes in variables that lead to changes in other variables
+
+what is data: 
+	"data are values of qualitative or quantitative variables belonging to a set of itemes0"
+	qual = country of orgin sex treatmen (not order, not mearsrement)
+	quant. = height , weight , blood presuur (order, measrement)
+
+Data look-like:
+	API
+	Medical record
+	Text pattern file
+Important
+	yu have to have a question 
+	data + question = 
+
+big data 
+
+
+Experimental Design 
+
+ confonding 
+ 	other relationship that can affect the study 
+ 	correlation is not cauasation 
+
+inference 
+	select small group to experement 
+		avg #ofquestion 
+
