@@ -1,0 +1,209 @@
+repeate execute an nfinite loop 
+next skip anintereation of a loop 
+return exit a function 
+
+e.g. 
+	if(<condition>){
+
+	}
+else if 
+
+if(x>3){
+	y <- 10
+}else {
+	0
+}
+or 
+y<- if(x>3){ assign all the statement to Y 
+	10
+}else{
+	0
+}
+
+for(i in 1:10){
+	print(i)
+}
+===========================
+x <- c("a","b","c","d")
+
+for(i in 1:4){
+	print(x[i])
+}
+for(i in seq_along(x)){ //sec_along return length of vector
+	print(x[i])
+}
+for(letter in x){ //
+	print(letter)
+}
+
+for(i in 1:4) print(x[i]) //same line 
+
+==============================
+for loop can be nested
+
+x <- matrix(1:6, 2, 3)
+
+for(i in seq_len(nrow(x))){
+	for(j in seq_len(ncol(x))){
+		print(x[i,j])
+	}
+}
+
+===============================
+while()
+
+count <-0 
+while(count<10){
+	print(count)
+	count <- count+1
+}
+================================
+repeat 
+
+repeat{ //infinity loop 
+
+	break //end the loop 
+
+}
+
+================================
+next //skip iteration of loop 
+
+===============================
+function 
+function(..., sep=" ", collapse= NULL) //... arg. can take as many argument as possible 
+paste("a","b", sep=":") should print "a:b"
+
+=====================
+
+Lexical Scoping 
+
+make.power <- function(n){
+	pow <- function(x){
+		x*n
+	}
+	pow
+}
+
+cube <- make.power(3)
+square <- make.power(2)
+
+cube(3)   // 27
+square(3) // 9 
+
+how to find whats in a function environment?
+
+is(environment(cube)) // "n" "pow"
+get("n", environment(cube)) // 3
+
+is(environment(square)) // "n" "pow"
+get("n", environment(square)) // 2
+
+
+Lexical vs dynamic Scoping
+
+y <- 10 
+
+f <- function(x){
+	y<- 2
+	y^2 + g(x)
+
+}
+g <- function(x){
+	x*y 
+
+}
+
+what is the value of f(3)?
+Lexical the value of y is look up in the global environment
+dynamic the value of y is looked up from the function from which it was call 
+
+===========================================
+
+vectorized opration 
+
+R treat vector element to do competition  you can also do the same to matrix 
+
+for mutilpcation is matrix is we can use %*% 
+
+
+==================================================
+Dates and Times in R 
+
+Date class
+times is represent by two classes: POSIXct or POSIXIt class
+Dates are internally as the # days since 1970
+Times are internally as the # seconds since 1970
+
+How it works?
+x<- as.Date("1970-01-01") //"1970-01-01"
+unclass(x) // 0 
+unclass(as.Date("1970-01-02")) //1
+
+
+
+weekdays: give the day of the week
+months: give the month name 
+quarters : give the quarter number("Q1","Q2","Q3","Q4")
+
+
+e.g 
+x<- sys.time() //return the current time 
+p<- as.POSIXIt(x)
+names(unclass(p)) //
+p$sec 
+
+strptime functin /////function  ?strptime
+datestring<- c("January 10 , 2012 10:40", "December 9, 2011 9:10")
+x <- strptime(datasring, "%B %d, %Y %H:%M")
+
+
+"B" month
+"d" day
+"Y" 4-d year
+"H" hour 
+"M" minute
+
+
+======
+pollutantmean <- function(directory, pollutant, id = 1:332) {
+  allElement <- c()
+  fileList <- list.files(directory)
+  for(i in id){
+    filepath <-paste(directory,fileList[i], sep="/")
+   ## print(filepath)
+    file <- read.csv(filepath)
+    allElement <- c(allElement,file[[pollutant]]) 
+  }
+ meanValue<- mean(allElement,na.rm =TRUE)
+ print(meanValue)
+ 
+}
+
+=======================
+review on matrix 
+x <- matrix(1:6, 2,3)
+x[1,2]
+vs 
+x[1,3,drop=FALSE] // THIS DROP THE DIMENSION OF THE OBJECT
+
+
+
+METHOD THAT RETURNS ALL GOOD OBJECT/VALUES complete.cases
+x<- c(1,2,na,5,na,5)
+y<- c("a", "b", na, "d", na, "f")
+good<-complete.cases(x,y)
+
+
+airquality[1:5,]
+good <- complete.cases(airquality)
+airquality[good,][1:5, ]
+
+
+================================
+reading file 
+
+this is an optinzation for rading file in R (it looks ahead for 100 to see what type of classes are the columns)
+int <- read.table("datable.txt". nrows= 100)
+classes <- sapply(int, class)
+tabAll <- read.table("datable.txt", colClasses=classes)

@@ -1,0 +1,102 @@
+Week 3
+======
+lapply : loop over a list and evaluate a function on each element 
+sapply: Same as lapply but try simpligy the result 
+apply : apply a function over subsets of a vector 
+mapply: Multivariate version of lapply 
+
+An auxiliary function split is also useful, particularly in conjunction with lapply. 
+ e.g. 
+ 	lapply(list, fun, ...) //... is for argument for the function 
+ x <- list(a= 1:5, b = rnorm(10))
+ lapply(x, mean) 
+ * lapply would always return a list 
+ a // [1] 3
+ b /[1] .00
+
+
+ x <- 1:4
+ lapply(x, runif) 
+ *if you want to pass argument to runif that are not the default balue
+ lapply(x, runif, min = 0, max = 10)
+random uniform between 0 - 10. Each elemnt in x goes to runif to do the computition and return a vector (list). 
+
+
+x <- list(a = matrix(1:4, 2, 2), b = matrix(1:6, 3, 2))
+lapply(x, function(elem){ elem[,1]})
+
+
+sapply() try simplify lapply for 
+e.g. 
+	*if each list contained one element it would return a single vector 
+	* on the other hand, if the list contained x element it would return matrix(x, length()) 
+	* if it can't figure out --> it would return a list 
+
+=================================================================
+apply is less typing because good programmer are lazy :-( lol 
+x <- matrix(rnorm(200), 20, 10)
+this would result to random normal dis. with 20 rows and 10 col. 
+apply(x, 2, mean) //this would result to 10 values that represent each mean in each col.
+apply(x, 1, mean) // this would result to the mean result for each rows
+
+but there are predefined function :
+rowSums
+rowMeans
+colSums
+colMeans
+
+x <- matrix(rnorm(200), 20, 10)
+apply(x, 1, quantile, prbs = c(0.25, 0.75)) 
+you should get two result for each  rows 
+
+a <- array(rnorm(2 * 2 * 10) , c(2, 2, 10))
+apply(a, c(1, 2), mean) //you gave them margin 1, 2 but collapse the 3rd dimension 
+
+=====================================================
+tapply 
+=====
+tapply is used to apply a function over subsets of a vector 
+tapply(x, INDEX, FUN, ..., simplify = TRUE) //simplify shoudl we simplify the result? 
+
+e.g : 
+c <- c(rnorm(10), runif(10), rnorm(10,1))
+f <- gl(3,10) //11111...11, 2222...222, 333...333
+f
+tapply (x, f , mean) this would take the mean for rnorm , runif , rnorm sepratly 
+
+if tapply is not simplify it would return a list 
+
+=========================================================
+split
+=====
+split takes a vector or other objects and splits it into groups determined by factor or list of factors
+
+e.g
+split(x, f, drop = FALSE, ...) // IF EMPTY LEVEL SHOULD BE DROPPED
+
+c <- c(rnorm(10), runif(10), rnorm(10,1))
+ f <- gl(3,10) //11111...11, 2222...222, 333...333
+ split(x,f) would return a list of each distrubtion 
+
+ lapply(split(x,f), mean)
+
+ s <- split(airquality , airquality$Month) would split the variables into group of months
+
+ lapply(s, function(x) colMeans(x[, c("Ozon", "Solar.R", "Wind")]))
+
+sapply(s, function(x) colMeans(x[, c("Ozon", "Solar.R", "Wind")], na.rm = TRUE))
+//this would clean the NA 
+======================================================
+mapply 
+======
+mapply is multivariate apply of sorts which applies a function  in parallel over a set of arguments
+mapply(fun, ..., MoreArgs = NULL, SIMPLIFY = TRUE, USE.NAMES = TRUE)
+MoreArgs is a list of other arguments to fun 
+list(rep(1,4), rep(2,4), rep(3,2), rep(4,1))
+mapply(rep, 1:4, 4:1) it would return each rep sepratly 
+
+noise <- function(n, mean ,sd){
+	rnorm(n, mean, sd)
+}
+noise (5,1,2)
+
