@@ -1,0 +1,94 @@
+Raw data
+	* the original source of the data
+	* often hard to use for datay analyses
+	* raw data may only need to be processed once 
+
+Processed data
+	* Data that is ready for analysis 
+	* Processing can include merging subsetting, tranforming
+	* there may be standards for processing
+	* All steps should be recroded 
+
+E.g:
+	Raw data can go into different type of strapping steps to get the final result that would be use
+==================
+Four things should have 
+	1. The raw data.
+	2. A tidy data set
+		* each var. u measured should be in one column
+		* each different observation of that variable shoul dbe in a different row
+		* there should be one table for each "king" of variable
+
+	3. A code book describing each varaible and its values in the tidy dta set
+		* information about the variables 
+		* info about the summary choices you made
+		* info about the experiment study design you used
+		** they could be in word/text file title "Study Design"
+	4. An explicit and exact recipe you used to go from 1 -> 2, 3
+		* Computer script R
+		* the input raw data --> output tidy data 
+		* There are no parameteres to the script 
+		**instruction for your program 
+			* you have to give sotware version and how to use the raw data 
+
+===========================================================================
+How to use R to download file
+==============================
+getwd() setwd()
+Windows \\ vs linux / 
+
+file.exists("directoryName") false/true if the file exists 
+dir.create("directoryName") create directory 
+
+if(!file.exists("data")){
+	dir.create("data")
+}
+
+
+download.file() //download files from the Internet 
+fileUrl <- "url"
+download.file(fileUrl, destfile = "./data/cameras.csv", method = "curl") //curl is for https for mac
+dateDownloaded <-data() //to check when file was downloaded
+
+read.table() //is robust for reading data
+	** not the best for reading large amount of data
+
+cameraData <- read.table("./data/cameras.csv")
+## error line 1 di not have 13 element
+head(cameraData)
+error
+
+so .
+cameraData <- read.table("./data/camera.csv", sep ="," , header = T)
+sep --> sepration to ", " look through the file value serpated by , 
+head ---> ignore the first line and label as header 
+or....
+read.csv
+
+
+some other parameters for read.table
+	* quote : you can tell R whether there are any quoted values quote ="" means * no quotes 
+	* na.strings : set the character that represents a missing value 
+	* nrows: how many rows to read of the file (e.g you can read the first 10 files by passing 10)
+	* skip : pass int that represent how many line read.table should sip 
+
+tips : set quote = ""  helps to read data if you encounter trouble 
+
+
+
+reading excel file 
+==================
+read.xlsx()
+read.xlsx("./data/cameras.xlsx", sheetIndex=1, header =T) 
+you can pass colIndex, rowIndex to read specific files 
+
+
+xml
+libraru(XML)
+fileUrl<- "url"
+doc <- xmlTreePare(fileurl, useInternal=T)
+rootNode <- xmlRoot(doc)
+xmlName(rootNode)
+
+
+

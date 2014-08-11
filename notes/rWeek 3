@@ -100,3 +100,20 @@ noise <- function(n, mean ,sd){
 }
 noise (5,1,2)
 
+
+================
+Debugging
+========
+message: A generic it could be nothing && it won't stop the function from running 
+Warning: Something unexpected happened 
+Error: something wrong happened 
+Condition: programmer can create their own coniditons 
+log(-1) NaN Warning message 
+so, we created a function 
+printmessage <- function(x){
+	if(x>0){
+		print("x is g reater than zero")
+	}else 
+		print ("x is less thanor equal to zero")
+		invisible(x) //is function that stops prevent auto printing it prevent the auto printing 
+}

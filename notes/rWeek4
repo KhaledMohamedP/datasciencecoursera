@@ -1,0 +1,56 @@
+str
+===
+str = structure  
+rnorm : generate random normal variates with given mean and standard deviation 
+dnorm: evaluate the normal porbability density 
+pnorm : evaluate the cumulative distribution function for a normal distribution 
+rpois generate random poisson variates with a given rate 
+
+d density
+r random cumulative distribution
+p for cumulative distribution 
+q for quantile funciton
+
+//
+p for "probability", the cumulative distribution function (c. d. f.)
+q for "quantile", the inverse c. d. f.
+d for "density", the density function (p. f. or p. d. f.)
+r for "random", a random variable having the specified distribution
+//
+e.given
+dnorm(x, mean = 0, sd = 1, log = FALSE)
+pnorm(q, mean = 0, sd =1, lower.tail = TRUE, log.p = FALSE)
+rnorm(p, mean = 0, sd =1, lower.tail = TRUE, log.p = FALSE)
+rnorm(n, mean = 0, sd = 1)
+
+x <- rnorm(10) //10 number of variable generated
+
+set.seed(1) //if you want to generatd same sample of random variabels
+rpois = poisson distribution 
+
+sample(1;10, replace = TRUE) 
+sample(letters, 5) 5 sample letters
+
+===============================================
+R profiler 
+=======
+make code then optimize your code
+
+system.time() //return the time in sec taken to execute an expression 
+
+user time: time charged to the cpu for this expression
+elapse time: human time 
+
+usually user time and elapse time is close 
+
+Rprof() starts the profiler in R
+summaryRprof() summarizes the output from Rprof()
+
+DONT use system.time and rprof toghther 
+
+
+Rprof() prints out function call stack 
+
+by.total //shows whaere you progrma sepeend the timer
+sample interval 
+sampling.time
