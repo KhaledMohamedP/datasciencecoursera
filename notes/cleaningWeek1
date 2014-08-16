@@ -92,3 +92,6 @@ xmlName(rootNode)
 
 
 
+htmlTreeparse(file, useInternal=T)
+
+xpathSapply(file, "//li[@class='score']", xmlValue) 

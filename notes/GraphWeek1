@@ -1,0 +1,124 @@
+Principes of Analytic Graphic 
+============================
+1. Show comparisons
+	*Ecidence for a hypothesis is always relative to another competing hypothesis
+	* "compared to what?"
+
+2. show causality, mechanism, explantation, systematic structure 
+	* what is your casual framework for thinking about a question
+
+3. show multivariate data 
+	* multivariate = more than 2 variables 
+	* the real world is multivariate 
+
+4. Integration of evidence 
+	* completely integrate words, numbers , images, diagrams
+	* data graphics should make use of man modes of data presentation 
+	* don't let the tool drive the analysis 
+
+5.describe and document the evidence with appropriate labels , scales , source 
+	* data graphic should tell a complete stroy that is credible
+
+6.  content is king 
+	* analytical presentations ultimately stand or gall depending on the quality relevance and integrity of their content 
+
+================================================
+Exploratory Graphs 
+=================
+
+To understand  data properties 
+To find patterns in data 
+To suggest modeling strategies 
+To debug analyses
+To communicate result
+
+
+characteristics of exploratory graphos
+	* They are made quickly 
+	* A large number ae made
+	* the goal is personal understanding 
+	* Axes/legends are generally cleaned up (later)
+	* Color/size are primarily used for inforamtion 
+
+boxplot(pollution$pm24, col = "blue")
+
+
+hist(poluttion$pm, col = "green")
+
+rug(polution$pm25)
+
+hist(poluttion$pm, col = "green", breaks = 100) //make the bars smaller or bigger 
+
+
+abline( h =12 ) 
+
+abine (v = meadian(polltution$pm25), col = "magneta", lwd = 4)
+
+barplot(table(pollution$region), col = "wheat", main = "number of cou....")
+
+
+with(data, plot(latitude, pm25, col = region))  //plot 
+> abline(h = 12, lwd = 2, lty =2)
+============================================================
+The 3 system for graphing 
+1. The base plotting system
+	* aretist platet model
+3. use the plot function 
+
+
+
+e.g library(datases)
+data(cars)
+with(cars, plot(speed, dist))
+
+2. the lattice system 
+xyplot, bwplot 
+*you have to construct the whole function from the begining and is hard to add to it (compare to the base plotting system)
+
+3. ggplot2 system in ggpot2 package 
+	* mixes elements of base and lattice
+useful for condition plot 
+
+
+library(ggplot2)
+data(mpg)
+gplot(displ, hwy, data = mpg)
+
+
+you can't mix the function between the 3 system
+==================================================
+The Base Plotting System in R
+===============================
+	* Initializing a new plot 
+		plot(x, y) hist 
+	* Annotating (adding to) an existing plot
+		par
+
+e.g 
+library(datasets)
+hist(airquality$Ozon)
+
+with(airquality, plot(Wind, Ozon))
+
+boxplot <- tranform(airquality, Month = factor(Month)
+boxplot(Ozone ~ Month, airquality, xlab = "month", ylab= "Ozone (ppb) " )
+	*
+	pch plotting system 
+	lty line type (dashed, dotted)
+	lwd  line width 
+	col  color 
+	xlab character string for the x axis label 
+	ylab character string for y axis label 
+par()
+	las the orientation of axis labels on the plot 
+	bg background color
+	mar margin size 
+	oma outer margin size 
+	mfrow number of plots per row 
+	mfcol number of plots per row column plots
+
+Default values 
+
+par("lty") transparent
+par("mar") //5.1 4.1 ..
+par("mfrow") //1 1

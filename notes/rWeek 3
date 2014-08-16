@@ -107,7 +107,7 @@ Debugging
 message: A generic it could be nothing && it won't stop the function from running 
 Warning: Something unexpected happened 
 Error: something wrong happened 
-Condition: programmer can create their own coniditons 
+Condition: programmer can create their own conditions 
 log(-1) NaN Warning message 
 so, we created a function 
 printmessage <- function(x){
@@ -117,3 +117,24 @@ printmessage <- function(x){
 		print ("x is less thanor equal to zero")
 		invisible(x) //is function that stops prevent auto printing it prevent the auto printing 
 }
+
+something wrong:
+what is the input? how you call the function?
+what were you expecting? 
+what did you get?
+what you get vs what you expect
+can you reproduce the problem 
+
+======================================
+Debugging Tools R (functions)
+==========================
+traceback : traces back how many function called and where is the function that result to the error Debug: you send the function as an argument and flag the funciton as debug mode
+browser" suspends the execution of the a funciton 
+trace" allows you to insert debugging code into function 
+recover: allows you to modify the error begavior so that you can browse the funciton call stack 
+
+
+mean(x) ----> error in mean 
+traceback() ----> mean(x) //where the error occured
+debug(lm)
+lm(y-x) ---> you get detailed 
