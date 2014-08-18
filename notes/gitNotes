@@ -1,0 +1,78 @@
+About Git 
+
+What is git? 
+version control group that saves changes into your files 
+e.g 
+Local Version Control (Database on local computer )
+Centralized Version Control  (Shared Server)
+Distributed Version Control (Both server and local)
+
+
+File transition between 3 states 
+1. Modified Files
+2. Staged Files
+3. Committed Files 
+
+
+Let's start 
+
+Change setting to keep track of changes based on users
+git config --global user.name "your name"
+git config --global user.email your@mail.com
+git config --global core.editor "edit -W"
+
+Change editor to vim
+git config --global core.editor "vim"
+
+
+Present all the setting 
+git config --list 
+
+
+Get help using the man
+git help add 
+
+
+Initialize a repository 
+git init
+
+
+Add specific type of files to add to your repo 
+git add *.java 
+
+
+Ignore certain files 
+you need to create a file [.gitignore]
+e.g 
+*.jar  //ignore all .jar files in your repo 
+
+
+Staging 
+
+git diff  //it should shows exactly what has been changed 
+git diff --cached 
+
+How to git commit?   
+
+Tip:
+Your commit heading should be 50 char or less explaining the reason why your commited 
+Then you need paragraph format to explain the following 
+1. Original problem that was address
+2. Specifier change that you've made
+3. The result of your change
+4. Future improvement 
+5. Any known bug solved bug ID# .... 
+
+
+git commit -a -m 'changed something'   //this is to make changes quickly 
+
+
+
+
+
+
+
+
+
+
+Source : https://www.youtube.com/watch?v=r63f51ce84A by Derek Banas 
